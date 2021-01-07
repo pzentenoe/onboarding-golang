@@ -35,7 +35,7 @@ func initDependencies(client *mongo.Client, e *echo.Echo) {
 }
 
 func getMongoClient() *mongo.Client {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://chat_user:WbnBnWLRtCOZlXVT@pzenteno-cluster.q4adt.mongodb.net/games_store?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatalf("error to create client mongodb :%s", err.Error())
 	}
