@@ -1,0 +1,11 @@
+apiVersion: skaffold/v1beta7
+kind: Config
+build:
+  artifacts:
+    - image: onboarding.miclub/onboarding-golang
+      docker:
+        dockerfile: ./Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - deploy/skaffold/dev/*

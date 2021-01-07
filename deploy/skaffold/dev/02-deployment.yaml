@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: onboarding
+  name: onboarding-golang
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.onboarding-golang: glob:release-*
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: onboarding-golang
+  template:
+    metadata:
+      labels:
+        app: onboarding-golang
+      annotations:
+        logtopic: _onboarding.logs
+    spec:
+      containers:
+        - name: onboarding-golang
+          image: onboarding.miclub/onboarding-golang
+          ports:
+            - containerPort: 8088
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "128Mi"
+            limits:
+              cpu: "512m"
+              memory: "1024Mi"
+          env:
+            - name: ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: onboarding-configmap
+                  key: env
+            - name: REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: onboarding-configmap
+                  key: region
+            - name: MONGO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: onboarding-configmap
+                  key: mongo_url
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8088
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1

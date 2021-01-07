@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: onboarding-configmap
+  namespace: onboarding
+data:
+  env: "local"
+  region: "west2"
+  mongo_url: "mongo_url"

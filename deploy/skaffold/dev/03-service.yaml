@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: onboarding
+  name: onboarding-golang
+spec:
+  selector:
+    app: onboarding-golang
+  ports:
+    - name: onboarding-golang
+      protocol: TCP
+      port: 8088
+      targetPort: 8088
+  type: NodePort
