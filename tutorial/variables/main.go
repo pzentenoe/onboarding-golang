@@ -36,9 +36,9 @@ func main() {
 	fmt.Println(isMartes)
 
 	var caracter rune
-	caracter = 'g'
-	fmt.Println(caracter)
-	fmt.Println(strconv.QuoteRune(caracter))
+	caracter = '.'
+	fmt.Println("caracter code", caracter)
+	fmt.Println("caracter :", strconv.QuoteRune(caracter))
 
 	//Strings
 	var palabra string
@@ -52,7 +52,7 @@ func main() {
 	fmt.Println(strings.ToUpper(palabra2))
 
 	//strconv
-	numeroString := "10assaas"
+	numeroString := "10"
 	numeroConverted, err := strconv.Atoi(numeroString)
 	if err != nil {
 		fmt.Printf("Fallo al convertir : %s", err.Error())

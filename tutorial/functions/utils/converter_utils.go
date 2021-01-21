@@ -12,7 +12,7 @@ func ConvertPaginationParams(pageStr, sizeStr string) (page int, size int, err e
 	}
 	size, err = strconv.Atoi(sizeStr)
 	if err != nil {
-		return
+		 return page, size, fmt.Errorf("Fail to convert size :%s", err.Error())
 	}
 	return
 }

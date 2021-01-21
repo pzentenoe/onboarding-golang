@@ -34,4 +34,3 @@ func (u *User) FromJSON(jsonData string) (*User, error) {
 	}
 	return user, nil
 }
-

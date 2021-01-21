@@ -1,14 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
 	//Array
-	/*	var listaMeses [6]string
-		listaMeses = [6]string{"enero", "febrero", "marzo", "abril", "mayo", "Junio"}	*/
+	/*	var listaMeses3 [6]string
+		listaMeses3 = [6]string{"enero", "febrero", "marzo", "abril", "mayo", "Junio"}*/
+
 	var listaMeses []string
+	fmt.Println(listaMeses)
 	listaMeses = []string{"enero", "febrero", "marzo", "abril", "mayo", "Junio"}
+
+	listaMeses = append(listaMeses, "Julio")
+
+	//Eliminar
+	listaMeses = append(listaMeses[:5], listaMeses[6:]...)
+
+	fmt.Println("Lista de meses ", listaMeses)
 
 	//Slices
 	listaDias := make([]string, 0)
@@ -16,9 +27,10 @@ func main() {
 	listaDias = append(listaDias, "Martes", "Miercoles", "Jueves", "Viernes")
 
 	fmt.Println(len(listaMeses))
-	fmt.Println(len(listaDias))
-	fmt.Println(cap(listaDias))
+	fmt.Println("len", len(listaDias))
+	fmt.Println("cap", cap(listaDias))
 
+	fmt.Println("For i lista de meses")
 	for i := 0; i < len(listaMeses); i++ {
 		fmt.Println(listaMeses[i])
 	}
@@ -29,17 +41,21 @@ func main() {
 		fmt.Println(mes)
 	}
 
+
 	fmt.Println("--------")
-	listaMeses2 := []string{"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
+	listaMeses2 := []string{"Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
 
 	listaMeses2 = append(listaMeses, listaMeses2...)
 
+	fmt.Println("Lista unida")
 	for _, mes := range listaMeses2 {
 		fmt.Println(mes)
 	}
 
-	i := 0
 
+	fmt.Println("-------")
+
+	i := 0
 	//For infinito
 	for {
 		fmt.Println(i)

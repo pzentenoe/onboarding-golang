@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-
 	var namesEdadMap map[string]int
 	namesEdadMap = map[string]int{}
 	namesEdadMap["PabloZ"] = 32
@@ -14,15 +13,14 @@ func main() {
 	animalesMap["canino"] = "Perro"
 	animalesMap["felino"] = "Gato"
 
-	if animal, ok := animalesMap["canino"]; ok {
-		fmt.Printf("Existe: %s", animal)
+	if animal, founded := animalesMap["canino"]; founded {
+		formatedString := fmt.Sprintf("Existe el animal %s", animal)
+		fmt.Println(formatedString)
 	}
 
 	for key, value := range animalesMap {
-		fmt.Println(key)
-		fmt.Println(value)
+		fmt.Println("key", key)
+		fmt.Println("value", value)
 	}
-
-
 
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/pzentenoe/onboarding-golang/tutorial/functions/utils"
+	"github.com/pzentenoe/onboarding-golang/tutorial/structs/models"
 )
 
 func main() {
@@ -25,4 +26,23 @@ func main() {
 
 	fmt.Println(sumar(10, 8))
 
+	p1 := models.Persona{
+		Name:     "Pablo",
+		LastName: "Z",
+		Age:      32,
+	}
+
+	ChangeAge(&p1, 33)
+	fmt.Println(p1)
+
+	numero2 := 33
+	var numero *int
+	numero = &numero2
+	fmt.Println(*numero)
+	fmt.Println(&numero)
+
+}
+
+func ChangeAge(p *models.Persona, newAge int) {
+	p.Age = newAge
 }
